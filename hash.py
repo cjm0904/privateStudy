@@ -25,7 +25,6 @@ print(bcryptPw_hex)
 
 
 def authorize(request):
-    """Requests an authorization token for a registered Account"""
     required_fields = ['email', 'password']
     common.validate_fields(required_fields, request.json)
     password = bytes(request.json.get('password'), 'utf-8')
