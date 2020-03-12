@@ -28,7 +28,7 @@ def authorize(request):
     required_fields = ['email', 'password']
     common.validate_fields(required_fields, request.json)
     password = bytes(request.json.get('password'), 'utf-8')
-    auth_info = await auth_query.fetch_info_by_email(
+    auth_info = await auth_query.fetch_info_by_email( #await은 3.7이상에서만 
         request.app.config.DB_CONN, request.json.get('email'))
     if auth_info is None:
         raise ApiUnauthorized("No user with that email exists")
