@@ -5,20 +5,19 @@ app.secret_key = os.urandom(24)
 login_manager = LoginManager() 
 login_manager.init_app(app)
 
-lass User:
-    def __init__(self, user_id, email=None, passwd_hash=None,
-                 authenticated=False):
-        self.user_id = user_id
+class User:
+   def __init__(self, user_id, email=None, passwordHash=None, authentication=False):
+        self.user_id=user_id
         self.email = email
-        self.passwd_hash = passwd_hash
-        self.authenticated = authenticated
+        self.passwordHash = passwordHash
+        self.authentication = authentication
 
     def __repr__(self):
         r = {
             'user_id': self.user_id,
             'email': self.email,
             'passwd_hash': self.passwd_hash,
-            'authenticated': self.authenticated,
+            'authentication': self.authentication,
         }
         return str(r)
 
@@ -32,7 +31,7 @@ lass User:
         return self.user_id
 
     def is_authenticated(self):
-        return self.authenticated
+        return self.authentication
 
     def is_anonymous(self):
         return False
